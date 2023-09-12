@@ -112,6 +112,11 @@ static reboot_reason_code_t reboot_reason;
 static reboot_reason_code_t stm32h745_reboot_reason_get_hw_value(void)
 {
     lldbg("RCC RSR=0x%08x\n", RCC->RSR);
+    lldbg("RCC FLASH OPTSR_PRG=0x%08x\n", FLASH->OPTSR_PRG);
+    lldbg("RCC FLASH OPTSR_CUR=0x%08x\n", FLASH->OPTSR_CUR);
+    lldbg("RCC SYSCFG UR13=0x%08x\n", SYSCFG->UR13);
+    lldbg("RCC SYSCFG UR14=0x%08x\n", SYSCFG->UR14);
+
     if(__HAL_RCC_C1_GET_FLAG(RCC_FLAG_IWDG1RST))
     {
         return REBOOT_SYSTEM_WATCHDOG;
